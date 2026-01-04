@@ -2,6 +2,7 @@ import { PageProps, PaginationProps, Product, Vendor } from '@/types';
 import { Head, router } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import { ProductItem } from '@/Components/App/ProductItem';
+import { Pagination } from '@/Components/Core/Pagination';
 import { MapPin, Package, Star, Calendar, Share2 } from 'lucide-react';
 import { formatStoreName } from '@/helpers';
 
@@ -125,11 +126,15 @@ function Profile({
                             </div>
 
                             {products.data.length > 0 ? (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                    {products.data.map(product => (
-                                        <ProductItem product={product} key={product.id} />
-                                    ))}
-                                </div>
+                                <>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                        {products.data.map(product => (
+                                            <ProductItem product={product} key={product.id} />
+                                        ))}
+                                    </div>
+
+                                    {products.meta?.links && <Pagination links={products.meta.links} />}
+                                </>
                             ) : (
                                 <div className="text-center py-16">
                                     <Package className="w-16 h-16 mx-auto text-base-content/30 mb-4" />

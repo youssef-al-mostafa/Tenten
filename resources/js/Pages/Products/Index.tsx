@@ -2,6 +2,7 @@ import { Department, PaginationProps, Product } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import { ProductItem } from '@/Components/App/ProductItem';
+import { Pagination } from '@/Components/Core/Pagination';
 import { useState, useEffect, useDeferredValue } from 'react';
 
 interface ProductsIndexProps {
@@ -186,32 +187,7 @@ const ProductsIndex = ({ products, departments = { data: [] }, filters }: Produc
                                 ))}
                             </div>
 
-                            {products.meta?.links && Array.isArray(products.meta.links) && products.meta.links.length > 3 && (
-                                <div className="mt-12 flex justify-center">
-                                    <div className="flex items-center gap-2">
-                                        {products.meta.links.map((link, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => {
-                                                    if (link.url) {
-                                                        router.get(link.url, {}, {
-                                                            preserveState: true,
-                                                        });
-                                                    }
-                                                }}
-                                                disabled={!link.url}
-                                                className={`min-w-[40px] px-4 py-2 rounded-lg font-satoshi font-medium transition-all duration-200 ${link.active
-                                                    ? 'bg-black text-white shadow-md'
-                                                    : link.url
-                                                        ? 'bg-white text-gray-700 hover:bg-black hover:text-white border border-gray-300'
-                                                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                                    }`}
-                                                dangerouslySetInnerHTML={{ __html: link.label }}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
+                            {products.meta?.links && <Pagination links={products.meta.links} />}
                         </>
                     )}
                 </div>
