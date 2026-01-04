@@ -1,5 +1,5 @@
 import { PageProps, PaginationProps, Product, Vendor } from '@/types';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import { ProductItem } from '@/Components/App/ProductItem';
 import { MapPin, Package, Star, Calendar, Share2 } from 'lucide-react';
@@ -7,8 +7,9 @@ import { formatStoreName } from '@/helpers';
 
 function Profile({
     vendor,
-    products
-}: PageProps<{ vendor: Vendor, products: PaginationProps<Product> }>) {
+    products,
+    filters
+}: PageProps<{ vendor: Vendor, products: PaginationProps<Product>, filters: { keyword?: string, sort: string } }>) {
     const totalProducts = products.data.length;
     const memberSince = new Date(vendor.created_at).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -30,6 +31,16 @@ function Profile({
             navigator.clipboard.writeText(window.location.href);
             alert('Store link copied to clipboard!');
         }
+    };
+
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        router.get(route('vendor.profile', vendor.store_name), {
+            sort: e.target.value,
+            keyword: filters.keyword
+        }, {
+            preserveState: true,
+            preserveScroll: true
+        });
     };
 
     return (
@@ -100,11 +111,15 @@ function Profile({
                                     Products ({totalProducts})
                                 </h2>
                                 <div className="flex gap-2">
-                                    <select className="select select-bordered select-sm h-fit">
-                                        <option>Sort by: Latest</option>
-                                        <option>Price: Low to High</option>
-                                        <option>Price: High to Low</option>
-                                        <option>Most Popular</option>
+                                    <select
+                                        className="select select-bordered select-sm h-fit"
+                                        value={filters.sort}
+                                        onChange={handleSortChange}
+                                    >
+                                        <option value="newest">Sort by: Latest</option>
+                                        <option value="price_low">Price: Low to High</option>
+                                        <option value="price_high">Price: High to Low</option>
+                                        <option value="name">Name</option>
                                     </select>
                                 </div>
                             </div>

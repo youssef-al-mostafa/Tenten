@@ -26,7 +26,10 @@ class VendorController extends Controller
 
     public function profile(Request $request, Vendor $vendor)
     {
-        $keyword = $request->query(key: 'keyword');
+        $keyword = $request->query('keyword');
+        $sortBy = $request->query('sort', 'newest');
+        $perPage = $request->query('per_page', 12);
+
         $products = Product::query()
             ->published()
             ->where('created_by', $vendor->user_id)
@@ -36,13 +39,29 @@ class VendorController extends Controller
                         ->orWhere('description', 'LIKE', "%{$keyword}%");
                 });
             })
-            ->paginate();
+            ->when($sortBy === 'price_low', function ($query) {
+                $query->orderBy('price', 'asc');
+            })
+            ->when($sortBy === 'price_high', function ($query) {
+                $query->orderBy('price', 'desc');
+            })
+            ->when($sortBy === 'name', function ($query) {
+                $query->orderBy('title', 'asc');
+            })
+            ->when($sortBy === 'newest', function ($query) {
+                $query->orderBy('created_at', 'desc');
+            })
+            ->paginate($perPage);
 
         $vendor->load('user:id,name');
 
         return Inertia::render('Vendor/Profile', [
             'vendor' => $vendor,
             'products' => ProductResource::collection($products),
+            'filters' => [
+                'keyword' => $keyword,
+                'sort' => $sortBy,
+            ]
         ]);
     }
 
