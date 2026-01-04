@@ -64,7 +64,7 @@ export const ProductItem = ({ product }: Props) => {
                             {formatStoreName(product.user.store_name)}
                         </Link>
                         <span>in</span>
-                        <Link href="/" className="font-medium hover:text-black transition-colors duration-200 hover:underline">
+                        <Link href={route('product.byDepartment', product.department.slug)} className="font-medium hover:text-black transition-colors duration-200 hover:underline">
                             {product.department.name}
                         </Link>
                     </div>

@@ -113,21 +113,41 @@ class ProductController extends Controller
     public function byDepartment(Request $request, Department $department)
     {
         abort_unless($department->active, 404);
-        $keyword = $request->query(key: 'keyword');
+        $keyword = $request->query('keyword');
+        $sortBy = $request->query('sort', 'newest');
+        $perPage = $request->query('per_page', 12);
+
         $products = Product::query()
             ->forWebsite()
+            ->with(['user.vendor', 'department'])
             ->where('department_id', $department->id)
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {
-                    $query->where('title', 'LIKE', "%{$keyword}%")
-                        ->orWhere('description', 'LIKE', "%{$keyword}%");
+                    $query->where('products.title', 'LIKE', "%{$keyword}%")
+                        ->orWhere('products.description', 'LIKE', "%{$keyword}%");
                 });
             })
-            ->paginate();
+            ->when($sortBy === 'price_low', function ($query) {
+                $query->orderBy('products.price', 'asc');
+            })
+            ->when($sortBy === 'price_high', function ($query) {
+                $query->orderBy('products.price', 'desc');
+            })
+            ->when($sortBy === 'name', function ($query) {
+                $query->orderBy('products.title', 'asc');
+            })
+            ->when($sortBy === 'newest', function ($query) {
+                $query->orderBy('products.created_at', 'desc');
+            })
+            ->paginate($perPage);
 
             return Inertia::render ('Department/Index', [
                 'department' => new DepartmentResource ($department),
                 'products' => ProductResource::collection($products),
+                'filters' => [
+                    'keyword' => $keyword,
+                    'sort' => $sortBy,
+                ]
             ]);
     }
 
