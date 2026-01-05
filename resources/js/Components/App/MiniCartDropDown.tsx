@@ -1,5 +1,6 @@
-import { Link, usePage } from '@inertiajs/react';
+import {usePage } from '@inertiajs/react';
 import { CurrencyFormatter } from '../Core/CurrencyFormatter';
+import { Link } from '../Core/Link';
 
 export const MiniCartDropDowm = () => {
 

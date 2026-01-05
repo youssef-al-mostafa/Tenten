@@ -1,7 +1,8 @@
-import { Link, useForm, usePage } from '@inertiajs/react'
+import { useForm, usePage } from '@inertiajs/react'
 import { FormEventHandler, useState, useEffect } from 'react'
 import MiniCartDropDown from './MiniCartDropDown';
 import { PageProps } from '@/types';
+import { Link } from '../Core/Link';
 
 const NavBar = () => {
     const { auth, departments, totalQuantity, keyword } = usePage<PageProps>().props;
@@ -161,14 +162,18 @@ const NavBar = () => {
                             <div className="flex items-center gap-2 sm:gap-3">
                                 <Link
                                     href={route('login')}
-                                    className="btn btn-ghost font-satoshi font-medium text-[14px] sm:text-[16px] text-gray-700 hover:text-gray-900 hover:bg-gray-100/50 border-0 px-2 sm:px-4 py-2 h-auto min-h-[2rem] sm:min-h-[2.5rem] rounded-lg transition-all duration-200"
-                                >
+                                    className="btn btn-ghost font-satoshi font-medium text-[14px]
+                                               sm:text-[16px] text-gray-700 hover:text-gray-900 hover:bg-gray-100/50
+                                               border-0 px-2 sm:px-4 py-2 h-auto min-h-[2rem] sm:min-h-[2.5rem]
+                                               rounded-lg transition-all duration-200">
                                     Login
                                 </Link>
                                 <Link
                                     href={route('register')}
-                                    className="btn btn-primary font-satoshi font-medium text-[14px] sm:text-[16px] text-white bg-black hover:bg-gray-800 border-black hover:border-gray-800 px-3 sm:px-6 py-2 h-auto min-h-[2rem] sm:min-h-[2.5rem] rounded-lg transition-all duration-200"
-                                >
+                                    className="btn btn-primary font-satoshi font-medium text-[14px]
+                                               sm:text-[16px] text-white bg-black hover:bg-gray-800
+                                               border-black hover:border-gray-800 px-3 sm:px-6 py-2 h-auto
+                                               min-h-[2rem] sm:min-h-[2.5rem] rounded-lg transition-all duration-200">
                                     Sign Up
                                 </Link>
                             </div>
@@ -177,22 +182,31 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <div className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+            <div className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ease-in-out
+                            ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div
-                    className={`absolute inset-0 bg-black transition-opacity duration-300 ease-in-out ${isMobileMenuOpen ? 'bg-opacity-50' : 'bg-opacity-0'}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                ></div>
-                <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-3/5 md:w-1/2 bg-base-100 shadow-xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    className={`absolute inset-0 bg-black transition-opacity duration-300 ease-in-out
+                               ${isMobileMenuOpen ? 'bg-opacity-50' : 'bg-opacity-0'}`}
+                    onClick={() => setIsMobileMenuOpen(false)}></div>
+                <div className={`absolute top-0 right-0 h-full w-4/5 sm:w-3/5 md:w-1/2 bg-base-100 shadow-xl
+                                 transform transition-transform duration-300 ease-in-out
+                                 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                     <div className="flex items-center justify-between p-3 sm:p-4 border-b">
-                        <Link className="font-integral_cf font-extrabold text-xl sm:text-2xl text-black" href={route('home')}>
+                        <Link className=" font-satoshi font-extrabold text-xl sm:text-2xl text-black"
+                              href={route('home')}>
                             Tenten
                         </Link>
                         <button
                             className="btn btn-ghost btn-circle p-2"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            onClick={() => setIsMobileMenuOpen(false)}>
+                            <svg className="w-5 h-5 sm:w-6 sm:h-6"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 viewBox="0 0 24 24">
+                                <path strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
@@ -201,10 +215,10 @@ const NavBar = () => {
                         {NavLinks && NavLinks.map((Item) => (
                             <Link
                                 key={Item.Name}
-                                className="text-lg font-satoshi font-medium text-gray-700 hover:text-gray-900 py-2 border-b border-gray-100"
+                                className="text-lg font-satoshi font-medium
+                                           py-2"
                                 href={route(Item.Route)}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
+                                onClick={() => setIsMobileMenuOpen(false)}>
                                 {Item.Name}
                             </Link>
                         ))}
@@ -213,29 +227,34 @@ const NavBar = () => {
                             <div className="pt-4">
                                 <button
                                     onClick={() => setIsDepartmentsOpen(!isDepartmentsOpen)}
-                                    className="w-full flex items-center justify-between text-lg font-satoshi font-medium text-gray-700 hover:text-gray-900 py-2 border-b border-gray-100"
-                                >
+                                    className="w-full flex items-center justify-between text-lg
+                                               font-satoshi font-medium text-gray-700 hover:text-gray-900
+                                               py-2">
                                     <span>Departments</span>
                                     <svg
-                                        className={`w-5 h-5 transition-transform duration-200 ${isDepartmentsOpen ? 'rotate-180' : ''}`}
+                                        className={`w-5 h-5 transition-transform duration-200
+                                                  ${isDepartmentsOpen ? 'rotate-180' : ''}`}
                                         fill="none"
                                         stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        viewBox="0 0 24 24">
+                                        <path strokeLinecap="round"
+                                              strokeLinejoin="round"
+                                              strokeWidth={2}
+                                              d="M19 9l-7 7-7-7" />
                                     </svg>
                                 </button>
-                                <div className={`overflow-hidden transition-all duration-300 ${isDepartmentsOpen ? 'max-h-96' : 'max-h-0'}`}>
+                                <div className={`overflow-hidden transition-all duration-300
+                                               ${isDepartmentsOpen ? 'max-h-96' : 'max-h-0'}`}>
                                     {departments.map((department) => (
                                         <Link
                                             key={department.id}
                                             href={route('product.byDepartment', department.slug)}
-                                            className="block text-base font-medium text-gray-600 hover:text-gray-800 py-2 pl-4 border-b border-gray-100"
+                                            className="block text-base font-medium text-gray-600 hover:text-gray-800
+                                                       py-2 pl-4 border-b border-gray-100"
                                             onClick={() => {
                                                 setIsMobileMenuOpen(false);
                                                 setIsDepartmentsOpen(false);
-                                            }}
-                                        >
+                                            }}>
                                             {department.name}
                                         </Link>
                                     ))}
@@ -248,7 +267,7 @@ const NavBar = () => {
                                 <Link
                                     href={route('login')}
                                     className="flex w-full text-center btn btn-ghost font-satoshi
-                                    font-medium text-gray-700 hover:text-gray-900 py-3"
+                                    font-medium py-3"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     Login
@@ -269,7 +288,7 @@ const NavBar = () => {
                                 <Link
                                     href={route('profile.edit')}
                                     className="flex text-lg font-satoshi
-                                    font-medium text-gray-700 hover:text-gray-900 py-2"
+                                    font-medium py-2"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     Profile

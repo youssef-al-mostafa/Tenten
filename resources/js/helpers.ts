@@ -44,3 +44,9 @@ export const formatStoreName = (name: string) => {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
 }
+
+type ClassValue = string | number | boolean | undefined | null;
+
+export const cn = (...classes: ClassValue[]): string => {
+    return classes.filter(Boolean).join(' ');
+}

@@ -63,7 +63,7 @@ export default function Index({
                                 <input type="hidden" name="_token" value={csrf_token} />
                                 <PrimaryButton className="rounded-full flex justify-center items-center gap-2 sm:gap-3 w-full">
                                     <CreditCardIcon className="size-5 sm:size-6" />
-                                    <span className="text-sm sm:text-base">Proceed to checkout</span>
+                                    <span className="text-sm sm:text-xs">Proceed to checkout</span>
                                 </PrimaryButton>
                             </form>
                         </div>

@@ -12,9 +12,6 @@ use Illuminate\Support\Str;
 
 class VendorSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $vendors = [
