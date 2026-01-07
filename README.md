@@ -11,8 +11,6 @@
 [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF.svg)](https://vitejs.dev/)
 [![License: Custom](https://img.shields.io/badge/License-Custom_MIT-yellow.svg)](LICENSE)
 
-A scalable, enterprise-grade multi-vendor e-commerce platform built with Laravel 11, React, and TypeScript. Designed to demonstrate production-ready code architecture, security best practices, and modern full-stack development patterns.
-
 ## Table of Contents
 
 - [Tenten](#tenten)
@@ -23,7 +21,7 @@ A scalable, enterprise-grade multi-vendor e-commerce platform built with Laravel
     - [Frontend](#frontend)
   - [Key Features](#key-features)
     - [Multi-Vendor Architecture](#multi-vendor-architecture)
-    - [Payment Processing & Payouts](#payment-processing--payouts)
+    - [Payment Processing \& Payouts](#payment-processing--payouts)
     - [Role-Based Access Control](#role-based-access-control)
     - [Product Management](#product-management)
     - [Dynamic Content System](#dynamic-content-system)
@@ -35,13 +33,15 @@ A scalable, enterprise-grade multi-vendor e-commerce platform built with Laravel
   - [Documentation](#documentation)
     - [Architecture](#architecture)
     - [Features](#features)
-    - [Development](#development)
   - [Installation](#installation)
     - [Prerequisites](#prerequisites)
     - [Quick Start](#quick-start)
   - [Development Workflow](#development-workflow)
     - [Code Standards](#code-standards)
   - [Deployment](#deployment)
+    - [Production Infrastructure](#production-infrastructure)
+    - [Performance Optimizations](#performance-optimizations)
+    - [CI/CD Pipeline](#cicd-pipeline)
   - [Security Features](#security-features)
   - [Important Notice](#important-notice)
   - [License](#license)
@@ -178,9 +178,6 @@ Comprehensive documentation is available in the `/docs` directory:
 - [Role-Based Access Control](docs/features/role-permissions.md) - Permission system and role hierarchy
 - [Product Variations System](docs/features/product-variations.md) - Multi-attribute product variations
 
-### Development
-- [Environment Setup](docs/development/setup.md) - Local development installation and workflow
-
 ## Installation
 
 ### Prerequisites
@@ -241,8 +238,6 @@ npm run dev
 ```bash
 php artisan serve
 ```
-
-For detailed setup instructions, see [Setup Documentation](docs/development/setup.md).
 
 ## Development Workflow
 

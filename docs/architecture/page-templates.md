@@ -8,7 +8,6 @@ The home page and other dynamic pages are built using a template system that rea
 
 ### Template Definitions
 - `app/Templates/Layouts/home.json` - Home page template
-- `app/Templates/Layouts/help.json` - Help page template
 - `app/Templates/Layouts/product-details.json` - Product details template
 
 ### Services
