@@ -1,4 +1,4 @@
-import { Department, PaginationProps, Product } from '@/types';
+import { PageProps, PaginationProps, Product } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
 import { ProductItem } from '@/Components/App/ProductItem';
@@ -8,7 +8,6 @@ import { useState, useEffect, useDeferredValue } from 'react';
 
 interface ProductsIndexProps {
     products: PaginationProps<Product>;
-    departments: { data: Department[] };
     filters: {
         keyword?: string;
         department?: string;
@@ -16,8 +15,8 @@ interface ProductsIndexProps {
     };
 }
 
-const ProductsIndex = ({ products, departments = { data: [] }, filters }: ProductsIndexProps) => {
-    const { props } = usePage();
+const ProductsIndex = ({ products, filters }: ProductsIndexProps) => {
+    const { departments } = usePage<PageProps>().props;
 
     const [searchTerm, setSearchTerm] = useState(filters.keyword || '');
     const [selectedDepartment, setSelectedDepartment] = useState(filters.department || '');
@@ -84,7 +83,7 @@ const ProductsIndex = ({ products, departments = { data: [] }, filters }: Produc
                 searchTerm={searchTerm}
                 selectedDepartment={selectedDepartment}
                 sortBy={sortBy}
-                departments={departments}
+                departments={{ data: departments || [] }}
                 onSearchChange={setSearchTerm}
                 onDepartmentChange={(value) => handleFilterChange('department', value)}
                 onSortChange={(value) => handleFilterChange('sort', value)}

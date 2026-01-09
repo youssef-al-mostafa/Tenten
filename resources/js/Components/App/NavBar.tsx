@@ -182,7 +182,7 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <div className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ease-in-out
+            <div className={`fixed inset-0 z-[60] lg:hidden transition-all duration-300 ease-in-out
                             ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
                 <div
                     className={`absolute inset-0 bg-black transition-opacity duration-300 ease-in-out

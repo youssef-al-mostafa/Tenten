@@ -55,11 +55,8 @@ class ProductController extends Controller
             })
             ->paginate($perPage);
 
-        $departments = Department::published()->orderBy('name')->get();
-
         return Inertia::render('Products/Index', [
             'products' => ProductResource::collection($products),
-            'departments' => DepartmentResource::collection($departments),
             'filters' => [
                 'keyword' => $keyword,
                 'department' => $department,
@@ -119,7 +116,7 @@ class ProductController extends Controller
 
         $products = Product::query()
             ->forWebsite()
-            ->with(['user.vendor', 'department'])
+            ->with(['user.vendor', 'department', 'media'])
             ->where('department_id', $department->id)
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {

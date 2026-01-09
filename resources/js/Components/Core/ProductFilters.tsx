@@ -37,7 +37,7 @@ export function ProductFilters({
     const hasActiveFilters = searchTerm || selectedDepartment || sortBy !== 'newest';
 
     return (
-        <div className="container bg-base-200 sticky top-0 z-40 mb-4 border-0 right-0 left-0 mx-auto w-[90%] pt-9">
+        <div className="container bg-base-200 sticky top-0 z-30 mb-4 border-0 right-0 left-0 mx-auto w-[90%] pt-9">
             <div className="container mx-auto py-6">
                 <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
                     {showSearch && (

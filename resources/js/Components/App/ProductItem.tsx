@@ -70,7 +70,7 @@ export const ProductItem = ({ product }: Props) => {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-2 sm:gap-4">
+                <div className="flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
                     <div className="flex flex-col">
                         <span className="font-satoshi font-bold text-lg sm:text-xl lg:text-2xl text-black">
                             <CurrencyFormatter amount={product.price} />

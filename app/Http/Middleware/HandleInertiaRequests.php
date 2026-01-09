@@ -65,8 +65,7 @@ class HandleInertiaRequests extends Middleware
             'totalQuantity' => $totalQuantity,
             'totalPrice' => $totalPrice,
             'miniCartItems' => $cartItems,
-            'departments' => DepartmentResource::collection($departement)
-            ->collection->toArray(),
+            'departments' => DepartmentResource::collection($departement)->collection,
             'keyword' => $request->query(key: 'keyword')
         ]);
     }
