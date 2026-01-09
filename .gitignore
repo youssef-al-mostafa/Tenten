@@ -6,6 +6,9 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/app/public/*
+!/storage/app/public/.gitignore
+/storage/media-library/temp
 /vendor
 .env
 .env.backup

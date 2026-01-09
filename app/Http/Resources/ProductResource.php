@@ -5,7 +5,6 @@ namespace App\Http\Resources;
 use App\Models\VariationType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Log;
 
 class ProductResource extends JsonResource
 {
