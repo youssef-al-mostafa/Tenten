@@ -11,6 +11,7 @@ use App\Models\Vendor;
 use App\Enums\VendorStatusEnum;
 use App\Services\TemplateService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -23,6 +24,8 @@ class ProductController extends Controller
     }
     public function index(Request $request)
     {
+        Log::info('Products Index Page - Loading products');
+
         $keyword = $request->query('keyword');
         $department = $request->query('department');
         $sortBy = $request->query('sort', 'newest');
@@ -109,6 +112,11 @@ class ProductController extends Controller
 
     public function byDepartment(Request $request, Department $department)
     {
+        Log::info('Department Page - Loading products', [
+            'department_id' => $department->id,
+            'department_name' => $department->name
+        ]);
+
         abort_unless($department->active, 404);
         $keyword = $request->query('keyword');
         $sortBy = $request->query('sort', 'newest');

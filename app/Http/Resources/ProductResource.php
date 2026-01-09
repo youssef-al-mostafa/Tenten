@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Models\VariationType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Log;
 
 class ProductResource extends JsonResource
 {
@@ -14,13 +15,22 @@ class ProductResource extends JsonResource
     {
         $isDetailView = $this->resource->relationLoaded('variationTypes');
 
+        $imageUrl = $this->getFirstMediaUrl('images', 'small');
+        Log::info('ProductResource Image', [
+            'product_id' => $this->id,
+            'product_title' => $this->title,
+            'image_url' => $imageUrl,
+            'request_url' => $request->url(),
+            'media_count' => $this->getMedia('images')->count(),
+        ]);
+
         return [
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'price' => $this->price,
             'quantity' => $this->quantity,
-            'image' => $this->getFirstMediaUrl('images', 'small'),
+            'image' => $imageUrl,
             'user' => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,

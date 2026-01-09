@@ -60,7 +60,8 @@ class Product extends Model implements HasMedia
     }
     public function scopeVendorApproved(Builder $query): Builder
     {
-        return $query->join(
+        return $query->select('products.*')
+            ->join(
             'vendors',
             'vendors.user_id',
             '=',
