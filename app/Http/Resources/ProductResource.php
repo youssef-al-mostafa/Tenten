@@ -15,13 +15,6 @@ class ProductResource extends JsonResource
         $isDetailView = $this->resource->relationLoaded('variationTypes');
 
         $imageUrl = $this->getFirstMediaUrl('images', 'small');
-        Log::info('ProductResource Image', [
-            'product_id' => $this->id,
-            'product_title' => $this->title,
-            'image_url' => $imageUrl,
-            'request_url' => $request->url(),
-            'media_count' => $this->getMedia('images')->count(),
-        ]);
 
         return [
             'id' => $this->id,
