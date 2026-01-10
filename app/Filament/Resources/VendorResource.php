@@ -93,11 +93,9 @@ class VendorResource extends Resource
                     ->selectablePlaceholder(false),
                 Tables\Columns\TextColumn::make('products_count')
                     ->label('Total Products')
-                    ->getStateUsing(fn ($record) => $record->user->products()->count())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('active_products_count')
                     ->label('Active Products')
-                    ->getStateUsing(fn ($record) => $record->user->products()->where('status', 'published')->count())
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Joined')
