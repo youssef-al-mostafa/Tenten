@@ -19,9 +19,17 @@ interface ProductsGridProps {
 
 const EmptyState = ({ message }: { message: string }) => (
     <div className="col-span-full text-center py-12 sm:py-16 lg:py-20">
-        <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 sm:mb-6 bg-transparent rounded-full flex items-center justify-center">
-            <svg className="w-8 h-8 sm:w-12 sm:h-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 sm:mb-6 bg-transparent
+                        rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 sm:w-12 sm:h-12"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21"
+                      stroke="#9CA3AF"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round" />
             </svg>
         </div>
         <h3 className="font-integral_cf font-bold text-black text-xl sm:text-2xl mb-2">
@@ -61,7 +69,8 @@ const ProductsGrid = ({
         <section className={`w-[90%] container mx-auto py-8 sm:py-12 lg:py-16 ${className}`}>
             {showHeader && (
                 <div className="mb-8 sm:mb-10 lg:mb-12 text-center">
-                    <h2 className="font-integral_cf font-extrabold text-black text-2xl sm:text-3xl lg:text-4xl mb-4">
+                    <h2 className="font-integral_cf font-extrabold text-black
+                                   text-3xl lg:text-4xl mb-4">
                         {actualTitle}
                     </h2>
                 </div>

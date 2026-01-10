@@ -51,7 +51,7 @@ const FeaturedCategories = ({ content }: FeaturedCategoriesProps) => {
                                 mb-8 sm:mb-10 lg:mb-12 gap-4">
                     {content?.title && (
                         <h2 className="flex text-center mx-auto font-integral_cf font-extrabold text-black
-                                       text-2xl sm:text-3xl lg:text-4xl">
+                                       text-3xl lg:text-4xl">
                             {content.title}
                         </h2>
                     )}

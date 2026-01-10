@@ -45,26 +45,27 @@ const Banner = ({ content }: BannerProps) => {
                                    md:text-4xl lg:text-5xl xl:text-[3.25rem]'>
                         {title}
                     </h1>
-                    <p className="font-satoshi font-normal text-sm sm:text-base md:text-lg leading-snug tracking-normal text-black opacity-60 max-w-md mx-auto lg:mx-0">
+                    <p className="font-satoshi font-normal text-sm sm:text-base md:text-lg leading-snug
+                                  tracking-normal text-black opacity-60 max-w-md mx-auto lg:mx-0">
                         {subtitle}
                     </p>
                     <Link
                         href={route('products.index')}
-                        className="btn bg-black text-white rounded-full w-full sm:w-60 lg:w-48
-                                   px-4 sm:px-6 lg:px-15 py-3 sm:py-4 hover:border-solid hover:border-black
+                        className="btn bg-black text-white rounded-full w-fit sm:w-60 lg:w-48
+                                   px-12 sm:px-6 lg:px-15 py-3 sm:py-4 hover:border-solid hover:border-black
                                    hover:bg-white hover:text-black hover:border-3 no-underline text-center
-                                   text-sm font-medium mx-auto lg:mx-0 leading-[0]"
-                    >
+                                   text-sm font-medium mx-auto lg:mx-0 leading-[0]">
                         {button_text}
                     </Link>
-                    <div className="banner-numbers flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-4">
+                    <div className="banner-numbers flex flex-wrap justify-between lg:justify-start gap-3 sm:gap-4 mt-4">
                         {analytics && analytics.map((stat, index) => (
                             <div key={index} className="flex items-center gap-3 sm:gap-4">
                                 <div className="flex flex-col text-center lg:text-left">
                                     <span className="font-satoshi font-bold text-black text-xl sm:text-2xl">
                                         {stat.number}
                                     </span>
-                                    <span className="font-satoshi font-normal text-xs sm:text-sm leading-snug tracking-normal text-black opacity-60">
+                                    <span className="font-satoshi font-normal text-xs sm:text-sm leading-snug
+                                                     tracking-normal text-black opacity-60">
                                         {stat.name}
                                     </span>
                                 </div>
@@ -77,11 +78,17 @@ const Banner = ({ content }: BannerProps) => {
                 </div>
                 {banner_image && (
                     <div className='relative flex items-end h-full w-full lg:w-auto order-1 lg:order-2 mb-6 lg:mb-0'>
-                        <svg className='absolute right-4 sm:right-8 lg:right-0 top-8 sm:top-12 lg:top-14 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] lg:w-[104px] lg:h-[104px] opacity-80' viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M52 0C53.7654 27.955 76.0448 50.2347 104 52C76.0448 53.7654 53.7654 76.0448 52 104C50.2347 76.0448 27.955 53.7654 0 52C27.955 50.2347 50.2347 27.955 52 0Z" fill="black" />
+                        <svg className='absolute right-4 sm:right-8 lg:right-0 top-8 sm:top-12 lg:top-14 w-[60px]
+                                        h-[60px] sm:w-[80px] sm:h-[80px] lg:w-[104px] lg:h-[104px] opacity-80'
+                             viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M52 0C53.7654 27.955 76.0448 50.2347 104 52C76.0448 53.7654 53.7654 76.0448 52 104C50.2347 76.0448 27.955 53.7654 0 52C27.955 50.2347 50.2347 27.955 52 0Z"
+                                  fill="black" />
                         </svg>
-                        <svg className='absolute left-4 sm:left-8 lg:left-0 top-1/2 w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] lg:w-[56px] lg:h-[56px] opacity-80' viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M52 0C53.7654 27.955 76.0448 50.2347 104 52C76.0448 53.7654 53.7654 76.0448 52 104C50.2347 76.0448 27.955 53.7654 0 52C27.955 50.2347 50.2347 27.955 52 0Z" fill="black" />
+                        <svg className='absolute left-4 sm:left-8 lg:left-0 top-1/2 w-[32px] h-[32px]
+                                        sm:w-[40px] sm:h-[40px] lg:w-[56px] lg:h-[56px] opacity-80'
+                             viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M52 0C53.7654 27.955 76.0448 50.2347 104 52C76.0448 53.7654 53.7654 76.0448 52 104C50.2347 76.0448 27.955 53.7654 0 52C27.955 50.2347 50.2347 27.955 52 0Z"
+                                  fill="black" />
                         </svg>
                         <img
                             alt="Banner Image"
@@ -90,8 +97,7 @@ const Banner = ({ content }: BannerProps) => {
                             onError={(e) => {
                                 console.error('Banner image failed to load:', banner_image);
                                 e.currentTarget.style.display = 'none';
-                            }}
-                        />
+                            }}/>
                     </div>
                 )}
             </div>

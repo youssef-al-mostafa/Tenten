@@ -11,8 +11,8 @@ export const MiniCartDropDowm = () => {
             <div
                 tabIndex={0}
                 className="card card-compact dropdown-content
-                           bg-base-100 z-[50] mt-3 w-[90vw] max-w-[360px] shadow
-                           absolute left-1/2 -translate-x-[80%] sm:left-auto sm:translate-x-0 sm:right-0">
+                           bg-base-100 z-[50] mt-3 w-[60vw] sm:w-[360px] shadow
+                          ">
                 <div className="card-body">
                     <span className="text-lg font-bold">{totalQuantity} Items</span>
                     <div className="my-4 max-h-[300px] overflow-auto">
@@ -53,7 +53,7 @@ export const MiniCartDropDowm = () => {
                     <div className="card-actions">
                         <Link href={route('cart.index')}
                               className="btn btn-primary btn-block bg-black
-                                        hover:bg-black focus:bg-black">
+                                        hover:bg-black focus:bg-black text-white">
                            View cart
                         </Link>
                     </div>

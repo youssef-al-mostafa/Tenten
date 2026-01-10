@@ -29,7 +29,7 @@ const Brands = ({ content }: Props) => {
     }[rotation_speed];
 
     return (
-        <div className="bg-black w-full h-[112px] flex items-center overflow-hidden relative">
+        <div className="bg-black w-full h-[70px] sm:h-[90px] md:h-[112px] flex items-center overflow-hidden relative">
             <div
                 className={`
           ${animationClass}
@@ -42,12 +42,12 @@ const Brands = ({ content }: Props) => {
                     return (
                         <div
                             key={index}
-                            className="w-[200px] mr-24 flex justify-center items-center"
+                            className="w-[120px] sm:w-[150px] md:w-[200px] mr-12 sm:mr-16 md:mr-24 flex justify-center items-center"
                         >
                             <img
                                 src={brand.src || `/storage/${brand.image}`}
                                 alt={brand.alt || brand.name}
-                                className="h-8 w-auto brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
+                                className="h-5 sm:h-6 md:h-8 w-auto brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
                                 onError={(e) => {
                                     console.error('Image failed to load:', brand);
                                     e.currentTarget.style.display = 'none';

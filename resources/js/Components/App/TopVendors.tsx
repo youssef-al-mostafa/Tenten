@@ -25,7 +25,7 @@ const TopVendors = ({ content, topVendors: vendorsData }: TopVendorsProps) => {
                 <div className="flex items-center justify-center mb-12">
                     {content?.title && (
                         <h2 className="font-integral_cf font-extrabold text-black
-                                       text-2xl sm:text-3xl lg:text-4xl text-center">
+                                       text-3xl lg:text-4xl text-center">
                             {content.title}
                         </h2>
                     )}

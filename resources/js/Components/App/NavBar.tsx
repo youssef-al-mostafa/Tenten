@@ -65,8 +65,7 @@ const NavBar = () => {
                 <div className="container w-[90%] flex gap-2 sm:gap-3 md:gap-6 items-center justify-between mx-auto px-0">
                     <div className="flex text-black">
                         <Link className="logo bg-transparent hover:bg-transparent border-0 font-satoshi
-                                     font-extrabold transition-all duration-300 text-[18px] sm:text-[20px]
-                                     md:text-[24px] lg:text-[35px]"
+                                     font-extrabold transition-all duration-300 text-[26px] lg:text-[35px]"
                             href={route('home')}>
                             Tenten
                         </Link>
@@ -192,7 +191,7 @@ const NavBar = () => {
                                  transform transition-transform duration-300 ease-in-out
                                  ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                     <div className="flex items-center justify-between p-3 sm:p-4 border-b">
-                        <Link className=" font-satoshi font-extrabold text-xl sm:text-2xl text-black"
+                        <Link className="font-satoshi font-extrabold text-2xl text-black"
                               href={route('home')}>
                             Tenten
                         </Link>
@@ -224,7 +223,7 @@ const NavBar = () => {
                         ))}
 
                         {departments && Array.isArray(departments) && (
-                            <div className="pt-4">
+                            <div className="">
                                 <button
                                     onClick={() => setIsDepartmentsOpen(!isDepartmentsOpen)}
                                     className="w-full flex items-center justify-between text-lg
