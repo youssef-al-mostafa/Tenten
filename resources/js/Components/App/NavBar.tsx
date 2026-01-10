@@ -158,7 +158,7 @@ const NavBar = () => {
                         )}
 
                         {!user && (
-                            <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="hidden lg:flex items-center gap-2 sm:gap-3">
                                 <Link
                                     href={route('login')}
                                     className="btn btn-ghost font-satoshi font-medium text-[14px]

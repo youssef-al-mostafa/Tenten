@@ -11,11 +11,11 @@ const Footer = () => {
                                 sm:gap-6 lg:gap-7 text-center lg:text-left">
                     <Link className="logo bg-transparent hover:bg-transparent border-0 font-satoshi
                                      font-extrabold transition-all duration-300 text-[28px]
-                                     md:text-[32px] lg:text-[35px] text-black"
+                                     md:text-[30px] text-black"
                           href={'/'}>
                         {footerData.brandInfo.name}
                     </Link>
-                    <p className="font-satoshi font-normal text-base leading-relaxed
+                    <p className="font-satoshi font-normal text-sm leading-relaxed
                                   tracking-normal text-black opacity-70 max-w-sm mx-auto lg:mx-0">
                         {footerData.brandInfo.description}
                     </p>
@@ -27,7 +27,7 @@ const Footer = () => {
                                           transition-colors p-2 -m-2"
                                aria-label={social.name}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                     className="w-6 h-6 sm:w-7 sm:h-7"
+                                     className="w-6 h-6"
                                      fill="currentColor"
                                      viewBox="0 0 16 16">
                                     <path d={social.icon} />
@@ -39,15 +39,14 @@ const Footer = () => {
                 <div className="footer-col w-full lg:w-[70%] grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-8 text-center">
                     {footerData.columns.map((column) => (
                         <div key={column.title} className="footer-col-item flex flex-col gap-3">
-                            <h3 className="font-satoshi font-semibold text-black text-base
-                                           sm:text-lg tracking-[1px] sm:tracking-[2px]">
+                            <h3 className="font-satoshi font-semibold text-black text-base tracking-[1px] sm:tracking-[2px]">
                                 {column.title}
                             </h3>
                             <ul className="flex flex-col gap-1">
                                 {column.links.map((link) => (
                                     <li key={link.label}>
                                         <Link href={link.href}
-                                              className="font-satoshi font-normal text-sm sm:text-base leading-relaxed
+                                              className="font-satoshi font-normal text-sm leading-relaxed
                                                          tracking-normal text-black opacity-70
                                                          hover:opacity-90 transition-opacity inline-block py-1">
                                             {link.label}
@@ -59,8 +58,7 @@ const Footer = () => {
                     ))}
                 </div>
             </div>
-            <div className="hidden divider w-[90%] sm:w-[85%] mx-auto md:flex gap-0 my-2 items-center"></div>
-            <div className="rights-footer w-[90%] sm:w-[85%] mx-auto flex justify-center items-center py-3">
+            <div className="rights-footer w-[90%] sm:w-[85%] mx-auto flex justify-center items-center pt-3">
                 <div className='text-sm sm:text-base text-black opacity-70 text-center'>
                     &copy; {footerData.copyright.text}
                     {footerData.copyright.showYear && ` - ${new Date().getFullYear()}`}, All rights reserved

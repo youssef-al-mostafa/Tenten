@@ -41,7 +41,7 @@
   - [Deployment](#deployment)
     - [Production Infrastructure](#production-infrastructure)
     - [Performance Optimizations](#performance-optimizations)
-    - [CI/CD Pipeline](#cicd-pipeline)
+    - [Automated Deployment](#automated-deployment)
   - [Security Features](#security-features)
   - [Important Notice](#important-notice)
   - [License](#license)
@@ -265,8 +265,8 @@ This project is deployed to production at **[ten-ten.live](https://ten-ten.live)
 - **Asset Compilation:** Vite production build with minification and tree-shaking
 - **Nginx Configuration:** Optimized for Laravel with proper rewrites and caching headers
 
-### CI/CD Pipeline
-- **Automated Deployment:** GitHub webhook integration for automatic deployment on push to main branch
+### Automated Deployment
+- **GitHub Webhook Integration:** Automatic deployment triggered on push to main branch
 - **Zero-Downtime Deployment:** Deployment scripts ensure continuous availability during updates
 - **Environment Management:** Production-specific `.env` configuration with optimized settings
 - **Migration Automation:** Database migrations run automatically during deployment
