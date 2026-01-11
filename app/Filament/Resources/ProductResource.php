@@ -75,7 +75,6 @@ class ProductResource extends Resource
                                     }
                                 }
                             )
-                            ->required()
                             ->preload()
                             ->searchable(),
                     ]),
