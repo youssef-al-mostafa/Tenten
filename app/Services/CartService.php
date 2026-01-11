@@ -65,7 +65,7 @@ class CartService
                 $productIds = collect($cartItems)->map(fn($item) => $item['product_id']);
                 $products = Product::whereIn('id', $productIds)
                     ->with('user.vendor')
-                    ->published()
+                    ->forWebsite()
                     ->get()
                     ->keyBy('id');
                 $cartItemData = [];

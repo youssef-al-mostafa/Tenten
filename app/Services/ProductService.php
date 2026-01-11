@@ -26,7 +26,7 @@ class ProductService
         string $orderDirection = 'desc'
     ): Collection|LengthAwarePaginator {
         $query = Product::query()
-            ->published()
+            ->forWebsite()
             ->with(['user.vendor', 'department'])
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {

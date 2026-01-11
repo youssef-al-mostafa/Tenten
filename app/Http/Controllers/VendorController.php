@@ -31,7 +31,7 @@ class VendorController extends Controller
         $perPage = $request->query('per_page', 12);
 
         $products = Product::query()
-            ->published()
+            ->forWebsite()
             ->where('created_by', $vendor->user_id)
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {

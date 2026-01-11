@@ -29,7 +29,7 @@ class ProductController extends Controller
         $perPage = $request->query('per_page', 12);
 
         $products = Product::query()
-            ->published()
+            ->forWebsite()
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {
                     $query->where('title', 'LIKE', "%{$keyword}%")
@@ -81,7 +81,7 @@ class ProductController extends Controller
         ]);
 
         $similarProducts = Product::query()
-            ->published()
+            ->forWebsite()
             ->with(['user.vendor', 'department'])
             ->where('department_id', $product->department_id)
             ->where('id', '!=', $product->id)
