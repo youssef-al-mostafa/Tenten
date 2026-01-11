@@ -5,6 +5,8 @@ import { ProductItem } from '@/Components/App/ProductItem';
 import { Pagination } from '@/Components/Core/Pagination';
 import { ProductFilters } from '@/Components/Core/ProductFilters';
 import { useState, useEffect, useDeferredValue } from 'react';
+import StaggerContainer from '@/Components/Core/StaggerContainer';
+import StaggerItem from '@/Components/Core/StaggerItem';
 
 interface ProductsIndexProps {
     products: PaginationProps<Product>;
@@ -111,11 +113,13 @@ const ProductsIndex = ({ products, filters }: ProductsIndexProps) => {
                         </div>
                     ) : (
                         <>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                                 {products.data.map((product) => (
-                                    <ProductItem key={product.id} product={product} />
+                                    <StaggerItem key={product.id}>
+                                        <ProductItem product={product} />
+                                    </StaggerItem>
                                 ))}
-                            </div>
+                            </StaggerContainer>
 
                             {products.meta?.links && <Pagination links={products.meta.links} />}
                         </>

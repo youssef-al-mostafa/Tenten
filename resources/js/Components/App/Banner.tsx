@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react';
+import { motion } from 'framer-motion';
 
 interface BannerProps {
     content?: {
@@ -34,12 +35,20 @@ const Banner = ({ content }: BannerProps) => {
         return `/storage/${imagePath}`;
     };
 
+    const prefersReducedMotion = typeof window !== 'undefined'
+        ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        : false;
+
     return (
         <div className="bg-base-200 container min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh]
                         lg:h-[calc(100vh-110px)] mx-auto w-[90%]">
             <div className="flex flex-col lg:flex-row justify-between items-center max-w-full p-0 h-full
                             w-full px-0  py-8 lg:py-0 mx-auto">
-                <div className="banner-content flex flex-col gap-4 sm:gap-6 lg:gap-7 h-fit my-auto w-full
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.2 }}
+                    className="banner-content flex flex-col gap-4 sm:gap-6 lg:gap-7 h-fit my-auto w-full
                                 lg:w-[41%] text-center lg:text-left order-2 lg:order-1">
                     <h1 className='leading font-sans font-extrabold text-black text-2xl sm:text-3xl
                                    md:text-4xl lg:text-5xl xl:text-[3.25rem]'>
@@ -75,9 +84,13 @@ const Banner = ({ content }: BannerProps) => {
                             </div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
                 {banner_image && (
-                    <div className='relative flex items-end h-full w-full lg:w-auto order-1 lg:order-2 mb-6 lg:mb-0'>
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.4 }}
+                        className='relative flex items-end h-full w-full lg:w-auto order-1 lg:order-2 mb-6 lg:mb-0'>
                         <svg className='absolute right-4 sm:right-8 lg:right-0 top-8 sm:top-12 lg:top-14 w-[60px]
                                         h-[60px] sm:w-[80px] sm:h-[80px] lg:w-[104px] lg:h-[104px] opacity-80'
                              viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +111,7 @@ const Banner = ({ content }: BannerProps) => {
                                 console.error('Banner image failed to load:', banner_image);
                                 e.currentTarget.style.display = 'none';
                             }}/>
-                    </div>
+                    </motion.div>
                 )}
             </div>
         </div>

@@ -30,11 +30,11 @@ class ProductService
             ->with(['user.vendor', 'department'])
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {
-                    $query->where('title', 'LIKE', "%{$keyword}%")
-                        ->orWhere('description', 'LIKE', "%{$keyword}%");
+                    $query->where('products.title', 'LIKE', "%{$keyword}%")
+                        ->orWhere('products.description', 'LIKE', "%{$keyword}%");
                 });
             })
-            ->orderBy($orderBy, $orderDirection);
+            ->orderBy('products.' . $orderBy, $orderDirection);
 
         if ($limit && !$paginate) {
             return $query->limit($limit)->get();

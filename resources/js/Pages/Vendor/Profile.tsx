@@ -5,6 +5,9 @@ import { ProductItem } from '@/Components/App/ProductItem';
 import { Pagination } from '@/Components/Core/Pagination';
 import { MapPin, Package, Star, Calendar, Share2 } from 'lucide-react';
 import { formatStoreName } from '@/helpers';
+import FadeInOnScroll from '@/Components/Core/FadeInOnScroll';
+import StaggerContainer from '@/Components/Core/StaggerContainer';
+import StaggerItem from '@/Components/Core/StaggerItem';
 
 function Profile({
     vendor,
@@ -50,7 +53,8 @@ function Profile({
 
             <div className="bg-base-200 min-h-screen">
                 <div className="container mx-auto py-8 w-[90%]">
-                        <div className="flex items-start gap-6 mb-8">
+                        <FadeInOnScroll>
+                            <div className="flex items-start gap-6 mb-8">
                             <div className="flex-shrink-0">
                                 <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-lg">
                                     {vendor.cover_image ? (
@@ -104,7 +108,8 @@ function Profile({
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                            </div>
+                        </FadeInOnScroll>
 
                         <div className="mt-12">
                             <div className="flex items-center justify-between mb-8">
@@ -127,11 +132,13 @@ function Profile({
 
                             {products.data.length > 0 ? (
                                 <>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                    <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                         {products.data.map(product => (
-                                            <ProductItem product={product} key={product.id} />
+                                            <StaggerItem key={product.id}>
+                                                <ProductItem product={product} />
+                                            </StaggerItem>
                                         ))}
-                                    </div>
+                                    </StaggerContainer>
 
                                     {products.meta?.links && <Pagination links={products.meta.links} />}
                                 </>

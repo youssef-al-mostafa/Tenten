@@ -4,6 +4,9 @@ import AppLayout from '@/Layouts/AppLayout';
 import { Store } from 'lucide-react';
 import VendorCard from '@/Components/App/VendorCard';
 import { Pagination } from '@/Components/Core/Pagination';
+import FadeInOnScroll from '@/Components/Core/FadeInOnScroll';
+import StaggerContainer from '@/Components/Core/StaggerContainer';
+import StaggerItem from '@/Components/Core/StaggerItem';
 
 interface AllVendorsProps extends Record<string, unknown> {
     vendors: PaginationProps<Vendor>;
@@ -18,12 +21,14 @@ const AllVendors = ({ vendors }: PageProps<AllVendorsProps>) => {
 
             <div className="bg-base-200 min-h-screen">
                 <div className="container w-[90%] mx-auto py-12">
-                    <div className="mb-12">
-                        <h1 className="text-4xl font-bold text-gray-900 mb-3">All Stores</h1>
-                        <p className="text-gray-600">
-                            Discover amazing stores from verified vendors
-                        </p>
-                    </div>
+                    <FadeInOnScroll>
+                        <div className="mb-12">
+                            <h1 className="text-4xl font-bold text-gray-900 mb-3">All Stores</h1>
+                            <p className="text-gray-600">
+                                Discover amazing stores from verified vendors
+                            </p>
+                        </div>
+                    </FadeInOnScroll>
 
                     {vendors.data.length === 0 ? (
                         <div className="text-center py-20">
@@ -37,11 +42,13 @@ const AllVendors = ({ vendors }: PageProps<AllVendorsProps>) => {
                         </div>
                     ) : (
                         <>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {vendors.data.map((vendor) => (
-                                    <VendorCard key={vendor.user_id} vendor={vendor} maxProducts={5} />
+                                    <StaggerItem key={vendor.user_id}>
+                                        <VendorCard vendor={vendor} maxProducts={5} />
+                                    </StaggerItem>
                                 ))}
-                            </div>
+                            </StaggerContainer>
 
                             {vendors.meta?.links && <Pagination links={vendors.meta.links} />}
                         </>

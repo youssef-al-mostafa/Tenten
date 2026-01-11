@@ -32,8 +32,8 @@ class ProductController extends Controller
             ->forWebsite()
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {
-                    $query->where('title', 'LIKE', "%{$keyword}%")
-                        ->orWhere('description', 'LIKE', "%{$keyword}%");
+                    $query->where('products.title', 'LIKE', "%{$keyword}%")
+                        ->orWhere('products.description', 'LIKE', "%{$keyword}%");
                 });
             })
             ->when($department, function ($query, $department) {
@@ -42,16 +42,16 @@ class ProductController extends Controller
                 });
             })
             ->when($sortBy === 'price_low', function ($query) {
-                $query->orderBy('price', 'asc');
+                $query->orderBy('products.price', 'asc');
             })
             ->when($sortBy === 'price_high', function ($query) {
-                $query->orderBy('price', 'desc');
+                $query->orderBy('products.price', 'desc');
             })
             ->when($sortBy === 'name', function ($query) {
-                $query->orderBy('title', 'asc');
+                $query->orderBy('products.title', 'asc');
             })
             ->when($sortBy === 'newest', function ($query) {
-                $query->orderBy('created_at', 'desc');
+                $query->orderBy('products.created_at', 'desc');
             })
             ->paginate($perPage);
 
@@ -83,8 +83,8 @@ class ProductController extends Controller
         $similarProducts = Product::query()
             ->forWebsite()
             ->with(['user.vendor', 'department'])
-            ->where('department_id', $product->department_id)
-            ->where('id', '!=', $product->id)
+            ->where('products.department_id', $product->department_id)
+            ->where('products.id', '!=', $product->id)
             ->limit(8)
             ->get();
 
@@ -117,7 +117,7 @@ class ProductController extends Controller
         $products = Product::query()
             ->forWebsite()
             ->with(['user.vendor', 'department', 'media'])
-            ->where('department_id', $department->id)
+            ->where('products.department_id', $department->id)
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {
                     $query->where('products.title', 'LIKE', "%{$keyword}%")

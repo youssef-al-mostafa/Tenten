@@ -63,7 +63,7 @@ class CartService
                     //dd($cartItems);
                 }
                 $productIds = collect($cartItems)->map(fn($item) => $item['product_id']);
-                $products = Product::whereIn('id', $productIds)
+                $products = Product::whereIn('products.id', $productIds)
                     ->with('user.vendor')
                     ->forWebsite()
                     ->get()

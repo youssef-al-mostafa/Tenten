@@ -32,24 +32,24 @@ class VendorController extends Controller
 
         $products = Product::query()
             ->forWebsite()
-            ->where('created_by', $vendor->user_id)
+            ->where('products.created_by', $vendor->user_id)
             ->when($keyword, function ($query, $keyword) {
                 $query->where(function ($query) use ($keyword) {
-                    $query->where('title', 'LIKE', "%{$keyword}%")
-                        ->orWhere('description', 'LIKE', "%{$keyword}%");
+                    $query->where('products.title', 'LIKE', "%{$keyword}%")
+                        ->orWhere('products.description', 'LIKE', "%{$keyword}%");
                 });
             })
             ->when($sortBy === 'price_low', function ($query) {
-                $query->orderBy('price', 'asc');
+                $query->orderBy('products.price', 'asc');
             })
             ->when($sortBy === 'price_high', function ($query) {
-                $query->orderBy('price', 'desc');
+                $query->orderBy('products.price', 'desc');
             })
             ->when($sortBy === 'name', function ($query) {
-                $query->orderBy('title', 'asc');
+                $query->orderBy('products.title', 'asc');
             })
             ->when($sortBy === 'newest', function ($query) {
-                $query->orderBy('created_at', 'desc');
+                $query->orderBy('products.created_at', 'desc');
             })
             ->paginate($perPage);
 

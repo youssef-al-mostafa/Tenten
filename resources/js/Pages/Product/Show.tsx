@@ -9,6 +9,10 @@ import { Product, VariationTypeOption } from '@/types'
 import { Head, Link, router, useForm, usePage } from '@inertiajs/react';
 import { error } from 'console';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import FadeInOnScroll from '@/Components/Core/FadeInOnScroll';
+import StaggerContainer from '@/Components/Core/StaggerContainer';
+import StaggerItem from '@/Components/Core/StaggerItem';
+import { motion } from 'framer-motion';
 
 interface Props {
     product: Product;
@@ -254,13 +258,21 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
 
                     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
                         <div className="grid gap-0 grid-cols-1 lg:grid-cols-12">
-                            <div className="col-span-7 bg-white">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="col-span-7 bg-white">
                                 <div className="sticky top-8 p-6">
                                     <Carousel images={images} />
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            <div className="col-span-5 p-8 pr-0 bg-base-200">
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                                className="col-span-5 p-8 pr-0 bg-base-200">
                                 <div className="">
                                     <div className="mb-4">
                                         <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800
@@ -307,7 +319,7 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                                         }}></div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
@@ -315,22 +327,27 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
             {similarProducts && similarProducts.data.length > 0 && (
                 <div className="bg-gray-50 py-16">
                     <div className="container mx-auto w-[90%]">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                                {getContent('similar_products', 'title')}
-                            </h2>
-                            <p className="text-gray-600 max-w-2xl mx-auto">
-                                {getContent('similar_products', 'description')}
-                            </p>
-                        </div>
+                        <FadeInOnScroll>
+                            <div className="text-center mb-12">
+                                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                                    {getContent('similar_products', 'title')}
+                                </h2>
+                                <p className="text-gray-600 max-w-2xl mx-auto">
+                                    {getContent('similar_products', 'description')}
+                                </p>
+                            </div>
+                        </FadeInOnScroll>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {similarProducts.data.slice(0, 8).map((similarProduct) => (
-                                <ProductItem key={similarProduct.id} product={similarProduct} />
+                                <StaggerItem key={similarProduct.id}>
+                                    <ProductItem product={similarProduct} />
+                                </StaggerItem>
                             ))}
-                        </div>
+                        </StaggerContainer>
 
-                        <div className="text-center mt-12">
+                        <FadeInOnScroll delay={0.3}>
+                            <div className="text-center mt-12">
                             <Link
                                 href={route('product.byDepartment', product.department.slug)}
                                 className="btn bg-white text-black border-2 border-black rounded-full
@@ -342,7 +359,8 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </Link>
-                        </div>
+                            </div>
+                        </FadeInOnScroll>
                     </div>
                 </div>
             )}
