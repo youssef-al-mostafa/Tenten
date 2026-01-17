@@ -15,4 +15,10 @@
     --animation-duration: 2000ms;
 }
 
+@media (max-width: 1023px) {
+    .ltr-mobile {
+        direction: rtl;
+    }
+}
+
 

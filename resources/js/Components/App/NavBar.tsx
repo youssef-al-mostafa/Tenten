@@ -98,7 +98,8 @@ const NavBar = () => {
                             </svg>
                         </button>
                     </div>
-                    <div className="flex justify-end items-center gap-1 sm:gap-2 md:gap-4 my-auto min-w-max">
+                    <div className="flex justify-end items-center gap-1
+                                    sm:gap-2 md:gap-4 my-auto min-w-max ltr-mobile">
                         <button
                             className="btn btn-ghost btn-circle lg:hidden p-1 sm:p-2"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
