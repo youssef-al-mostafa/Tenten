@@ -119,8 +119,8 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
 
     const renderProductVariationTypes = () => {
         return (product.variationTypes.map((type) => (
-            <div key={type.id} className="bg-white p-4 rounded-lg border border-gray-200">
-                <h3 className='mb-4 font-semibold text-lg text-gray-900'>{type.name}</h3>
+            <div key={type.id} className="bg-white p-3 lg:p-4 rounded-lg border border-gray-200">
+                <h3 className='mb-3 lg:mb-4 font-semibold text-base lg:text-lg text-gray-900'>{type.name}</h3>
                 {type.type === 'Image' &&
                     <div className="flex flex-wrap gap-3">
                         {type.options.map((option) => (
@@ -132,7 +132,7 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                                 {option.images && (
                                     <img
                                         src={option.images[0].thumb}
-                                        className={`w-16 h-16 rounded-lg object-cover border-2 transition-all duration-200 group-hover:scale-105 ${selectedOptions[type.id]?.id === option.id
+                                        className={`w-14 h-14 lg:w-16 lg:h-16 rounded-lg object-cover border-2 transition-all duration-200 group-hover:scale-105 ${selectedOptions[type.id]?.id === option.id
                                             ? 'border-blue-500 ring-2 ring-blue-200'
                                             : 'border-gray-200 hover:border-gray-300'
                                             }`}
@@ -148,7 +148,7 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                         {type.options.map(option => (
                             <label
                                 key={option.id}
-                                className={`px-4 py-2 border-2 rounded-lg cursor-pointer transition-all duration-200 ${selectedOptions[type.id]?.id === option.id
+                                className={`px-3 lg:px-4 py-2 border-2 rounded-lg cursor-pointer transition-all duration-200 text-sm lg:text-base ${selectedOptions[type.id]?.id === option.id
                                     ? 'border-blue-500 bg-blue-50 text-blue-700 font-medium'
                                     : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'
                                     }`}
@@ -172,7 +172,8 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
 
     const renderAddToCartButton = () => {
         return (
-            <div className="bg-white p-6 rounded-lg border border-gray-200 space-y-4">
+            <div className="lg:bg-white lg:p-6 rounded-lg lg:border
+                            lg:border-gray-200 space-y-4">
                 <div className="flex gap-4">
                     <div className="flex-1">
                         <label className="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
@@ -191,7 +192,7 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                 </div>
                 <button
                     onClick={addToCart}
-                    className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2'
+                    className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 lg:py-4 px-4 lg:px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2 text-sm lg:text-base'
                     disabled={form.processing}
                 >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -199,18 +200,20 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                     </svg>
                     <span>{form.processing ? 'Adding...' : 'Add to Cart'}</span>
                 </button>
-                <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                <div className="flex items-center justify-center space-x-3 lg:space-x-4 text-xs lg:text-sm text-gray-500">
                     <div className="flex items-center">
                         <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                         </svg>
-                        Secure checkout
+                        <span className="hidden sm:inline">Secure checkout</span>
+                        <span className="sm:hidden">Secure</span>
                     </div>
                     <div className="flex items-center">
                         <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                         </svg>
-                        Free returns
+                        <span className="hidden sm:inline">Free returns</span>
+                        <span className="sm:hidden">Returns</span>
                     </div>
                 </div>
             </div>
@@ -240,17 +243,17 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                 <meta property="og :site_name" content={appName} />
             </Head>
             <div className="bg-base-200">
-                <div className="container mx-auto py-8 w-[90%]">
-                    <nav className="text-sm breadcrumbs mb-6">
-                        <ul className="flex items-center space-x-2 text-gray-600">
+                <div className="container mx-auto py-4 lg:py-8 w-[90%]">
+                    <nav className="text-xs lg:text-sm breadcrumbs mb-4 lg:mb-6">
+                        <ul className="flex items-center space-x-1 lg:space-x-2 text-gray-600">
                             <li><Link href={route('home')} className="hover:text-gray-900">Home</Link></li>
-                            <li className="before:content-['/'] before:mx-2">
+                            <li className="before:content-['/'] before:mx-1 lg:before:mx-2">
                                 <Link href={route('product.byDepartment', product.department.slug)}
                                     className="hover:text-gray-900">
                                     {product.department.name}
                                 </Link>
                             </li>
-                            <li className="before:content-['/'] before:mx-2 text-gray-900 font-medium truncate">
+                            <li className="before:content-['/'] before:mx-1 lg:before:mx-2 text-gray-900 font-medium truncate max-w-[120px] lg:max-w-none">
                                 {product.title}
                             </li>
                         </ul>
@@ -262,8 +265,8 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className="col-span-7 bg-white">
-                                <div className="sticky top-8 p-6">
+                                className="lg:col-span-7 bg-white">
+                                <div className="lg:sticky lg:top-8 p-4 lg:p-6">
                                     <Carousel images={images} />
                                 </div>
                             </motion.div>
@@ -272,27 +275,28 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
-                                className="col-span-5 p-8 pr-0 bg-base-200">
+                                className="lg:col-span-5 p-4 lg:p-8 lg:pr-0 bg-base-200">
                                 <div className="">
                                     <div className="mb-4">
                                         <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800
                                                          text-sm font-medium rounded-full mb-4">
                                             {product.department.name}
                                         </span>
-                                        <h1 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">{product.title}</h1>
-                                        <div className="flex items-center text-gray-600 mb-6">
-                                            <span className="text-sm">Sold by</span>
+                                        <h1 className="text-xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">{product.title}</h1>
+                                        <div className="flex items-center text-gray-600 mb-4 lg:mb-6">
+                                            <span className="text-xs lg:text-sm">Sold by</span>
                                             <Link
                                                 href={route('vendor.profile', product.user.store_name)}
-                                                className='ml-2 font-semibold text-blue-600 hover:text-blue-700 hover:underline'
+                                                className='ml-2 font-semibold text-blue-600 hover:text-blue-700 hover:underline text-xs lg:text-sm'
                                             >
                                                 {formatStoreName(product.user.store_name)}
                                             </Link>
                                         </div>
                                     </div>
 
-                                    <div className="mb-8 p-4 bg-white rounded-lg border-2 border-gray-200">
-                                        <div className="text-4xl font-bold text-gray-900 mb-2">
+                                    <div className="mb-6 lg:mb-8 lg:p-4 lg:bg-white rounded-lg
+                                                    lg:border-2 lg:border-gray-200">
+                                        <div className="text-2xl lg:text-4xl font-bold text-gray-900 mb-2">
                                             <CurrencyFormatter amount={computedProduct.price} />
                                         </div>
                                         {computedProduct.quantity != undefined && computedProduct.quantity < 10 && (
@@ -305,13 +309,13 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                                         )}
                                     </div>
 
-                                    <div className="space-y-6">
+                                    <div className="space-y-4 lg:space-y-6">
                                         {renderProductVariationTypes()}
                                         {renderAddToCartButton()}
                                     </div>
 
-                                    <div className="mt-8 pt-8 border-t border-gray-200">
-                                        <h2 className="text-xl font-bold text-gray-900 mb-4">
+                                    <div className="mt-6 lg:mt-8 pt-6 lg:pt-8 border-t border-gray-200">
+                                        <h2 className="text-lg lg:text-xl font-bold text-gray-900 mb-4">
                                             {getContent('product_details', 'page_title')}
                                         </h2>
                                         <div className="prose prose-gray max-w-none wysiwyg-output text-gray-700" dangerouslySetInnerHTML={{
@@ -328,11 +332,11 @@ function Show({ appName, product, variationOptions, similarProducts, pageContent
                 <div className="bg-gray-50 py-16">
                     <div className="container mx-auto w-[90%]">
                         <FadeInOnScroll>
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                            <div className="text-center mb-8 lg:mb-12">
+                                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3 lg:mb-4">
                                     {getContent('similar_products', 'title')}
                                 </h2>
-                                <p className="text-gray-600 max-w-2xl mx-auto">
+                                <p className="text-sm lg:text-base text-gray-600 max-w-2xl mx-auto px-4">
                                     {getContent('similar_products', 'description')}
                                 </p>
                             </div>
