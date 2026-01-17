@@ -99,7 +99,7 @@ const ReviewCarousel = ({
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
             <div className="flex justify-between items-center mb-12">
-                <h2 className="font-integral_cf font-extrabold text-black
+                <h2 className="font-archivo text-black
                                text-3xl lg:text-4xl flex text-left">
                     {actualTitle}
                 </h2>

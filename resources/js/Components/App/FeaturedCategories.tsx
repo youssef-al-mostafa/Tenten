@@ -50,7 +50,7 @@ const FeaturedCategories = ({ content }: FeaturedCategoriesProps) => {
                 <div className="flex flex-col sm:flex-row items-center justify-between
                                 mb-8 sm:mb-10 lg:mb-12 gap-4">
                     {content?.title && (
-                        <h2 className="flex text-center mx-auto font-integral_cf font-extrabold text-black
+                        <h2 className="flex text-center mx-auto font-archivo text-black
                                        text-3xl lg:text-4xl">
                             {content.title}
                         </h2>

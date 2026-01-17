@@ -15,7 +15,7 @@ export default {
             fontFamily: {
                 oswald: ['Oswald', 'sans-serif'],
                 satoshi: ['Satoshi', 'sans-serif'],
-                integral_cf: ['Integral CF', 'sans-serif'],
+                archivo: ['Archivo Black', 'sans-serif'],
             },
             width: {
                 webkit: '-webkit-fill-available',

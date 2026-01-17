@@ -52,7 +52,7 @@ const NewsLetter = ({ content }: NewsLetterProps) => {
             <div className="newsletter w-[90%] sm:w-[85%] flex flex-col lg:flex-row mx-auto bg-black rounded-2xl sm:rounded-3xl h-fit px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 gap-6 lg:gap-8">
                 {content?.title && (
                     <div className="w-full lg:w-[50%] flex items-center justify-center lg:justify-start">
-                        <h1 className="text-white font-integral_cf font-extrabold
+                        <h1 className="text-white font-archivo
                                              text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-center lg:text-left leading-tight">
                             {content.title}
                         </h1>

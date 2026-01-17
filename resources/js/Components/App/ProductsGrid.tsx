@@ -35,7 +35,7 @@ const EmptyState = ({ message }: { message: string }) => (
                       strokeLinejoin="round" />
             </svg>
         </div>
-        <h3 className="font-integral_cf font-bold text-black text-xl sm:text-2xl mb-2">
+        <h3 className="font-archivo text-black text-xl sm:text-2xl mb-2">
             {message}
         </h3>
         <p className="font-satoshi font-normal text-sm sm:text-base text-black opacity-60 max-w-md mx-auto px-4">
@@ -73,7 +73,7 @@ const ProductsGrid = ({
             {showHeader && (
                 <FadeInOnScroll>
                     <div className="mb-8 sm:mb-10 lg:mb-12 text-center">
-                        <h2 className="font-integral_cf font-extrabold text-black
+                        <h2 className="font-archivo text-black
                                        text-3xl lg:text-4xl mb-4">
                             {actualTitle}
                         </h2>

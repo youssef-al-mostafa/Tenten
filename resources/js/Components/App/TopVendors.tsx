@@ -28,7 +28,7 @@ const TopVendors = ({ content, topVendors: vendorsData }: TopVendorsProps) => {
                 <FadeInOnScroll>
                     <div className="flex items-center justify-center mb-12">
                         {content?.title && (
-                            <h2 className="font-integral_cf font-extrabold text-black
+                            <h2 className="font-archivo text-black
                                            text-3xl lg:text-4xl text-center">
                                 {content.title}
                             </h2>
