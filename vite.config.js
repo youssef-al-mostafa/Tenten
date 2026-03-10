@@ -22,5 +22,5 @@ export default defineConfig({
             allow: ['.']
         }
     },
-    publicDir: 'public',
+    publicDir: false,
 });
