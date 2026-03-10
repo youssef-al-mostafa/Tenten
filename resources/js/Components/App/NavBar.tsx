@@ -5,7 +5,7 @@ import { PageProps } from '@/types';
 import { Link } from '../Core/Link';
 
 const NavBar = () => {
-    const { auth, departments, totalQuantity, keyword } = usePage<PageProps>().props;
+    const { auth, departments, totalQuantity, keyword, appName } = usePage<PageProps>().props;
     const { user } = auth;
     const searchForm = useForm<{ keyword: string }>({ keyword: keyword || '' });
     const { url } = usePage();
@@ -68,7 +68,7 @@ const NavBar = () => {
                         <Link className="logo bg-transparent hover:bg-transparent border-0 font-satoshi
                                      font-extrabold transition-all duration-300 text-[26px] md:text-[35px]"
                             href={route('home')}>
-                            Tenten
+                            {appName}
                         </Link>
                     </div>
                     <div className="menu-nav hidden md:flex w-[fit-content] min-w-max gap-6 xl:gap-9 flex-row
@@ -212,7 +212,7 @@ const NavBar = () => {
                     <div className="flex items-center justify-between p-3 sm:p-4 border-b">
                         <Link className="font-satoshi font-extrabold text-2xl text-black"
                               href={route('home')}>
-                            Tenten
+                            {appName}
                         </Link>
                         <button
                             className="btn btn-ghost btn-circle p-2"

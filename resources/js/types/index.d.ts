@@ -50,7 +50,6 @@ export interface TopVendor {
     }[];
 }
 
-
 export type PaginationLink = {
     url: string | null;
     label: string;
@@ -78,7 +77,7 @@ export type PaginationProps<T> = {
 
 export type PageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
-    > = T & {
+> = T & {
     appName: string;
     csrf_token: string;
     error: string;
@@ -100,10 +99,10 @@ export type PageProps<
 export type Product = {
     meta_title: string;
     id: number;
-    title : string;
-    slug : string;
-    price : number;
-    quantity : number;
+    title: string;
+    slug: string;
+    price: number;
+    quantity: number;
     image: string;
     images: Image[];
     short_description: string;
@@ -111,9 +110,9 @@ export type Product = {
     meta_title: string;
     meta_description: string;
     user: {
-        id:number;
-        name:string;
-        store_name:string;
+        id: number;
+        name: string;
+        store_name: string;
     };
     department: {
         id: number;
@@ -203,11 +202,12 @@ export type Category = {
     id: number;
     name: string;
 }
-    export type Department = {
+
+export type Department = {
     id: number;
     name: string;
     slug: string;
     meta_title: string;
     meta_description: string;
-    categories: Category [];
+    categories: Category[];
 }
