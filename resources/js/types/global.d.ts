@@ -10,6 +10,7 @@ declare global {
 
     /* eslint-disable no-var */
     var route: typeof ziggyRoute;
+    var global: typeof globalThis;
 }
 
 declare module '@inertiajs/core' {

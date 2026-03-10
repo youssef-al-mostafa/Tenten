@@ -7,7 +7,6 @@ import { arraysAreEqual, formatStoreName } from '@/helpers';
 import AppLayout from '@/Layouts/AppLayout';
 import { Product, VariationTypeOption } from '@/types'
 import { Head, Link, router, useForm, usePage } from '@inertiajs/react';
-import { error } from 'console';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import FadeInOnScroll from '@/Components/Core/FadeInOnScroll';
 import StaggerContainer from '@/Components/Core/StaggerContainer';
