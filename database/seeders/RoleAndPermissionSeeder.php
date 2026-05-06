@@ -16,7 +16,7 @@ class RoleAndPermissionSeeder extends Seeder
     public function run(): void
     {
         foreach (RolesEnum::cases() as $role) {
-            Role::create(['name' => $role->value]);
+            Role::firstOrCreate(['name' => $role->value]);
         }
 
         $permissions = [
@@ -29,7 +29,7 @@ class RoleAndPermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
 
         $masterAdmin = Role::findByName(RolesEnum::MASTER_ADMIN->value);

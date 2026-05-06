@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('payouts', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class, 'vendor_id');
+            $table->foreignId('vendor_id')->constrained('users');
             $table->decimal('amount', 20, 4);
             $table->timestamp('starting_from')->nullable();
             $table->timestamp('until')->nullable();

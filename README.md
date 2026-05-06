@@ -39,18 +39,13 @@
   - [Development Workflow](#development-workflow)
     - [Code Standards](#code-standards)
   - [Deployment](#deployment)
-    - [Production Infrastructure](#production-infrastructure)
-    - [Performance Optimizations](#performance-optimizations)
-    - [Automated Deployment](#automated-deployment)
-  - [Security Features](#security-features)
   - [Important Notice](#important-notice)
   - [License](#license)
-  - [Project Goals](#project-goals)
   - [Contact](#contact)
 
 ## Overview
 
-Tenten is a comprehensive B2B2C marketplace that enables clothing stores to create vendor accounts, manage their inventory, and sell products through a unified platform. The application showcases advanced Laravel patterns, role-based access control, dynamic content management, and a modern React/TypeScript frontend with server-side rendering capabilities.
+Tenten is a comprehensive B2B2C marketplace that enables clothing stores to create vendor accounts, manage their inventory, and sell products through a unified platform. Built to demonstrate enterprise-level Laravel architecture, multi-vendor marketplace patterns, role-based access control, and a modern React/TypeScript frontend.
 
 **Note:** This project contains sample data for demonstration purposes only and is not licensed for commercial or personal use. See [License](#license) section for details.
 
@@ -248,38 +243,7 @@ php artisan serve
 
 ## Deployment
 
-This project is deployed to production at **[ten-ten.live](https://ten-ten.live)** on a DigitalOcean droplet.
-
-### Production Infrastructure
-- **Platform:** DigitalOcean (Frankfurt datacenter - fra1)
-- **Server:** 1vCPU, 1GB RAM, 25GB SSD
-- **OS:** Ubuntu 22.04.5 LTS
-- **Web Server:** Nginx 1.18.0
-- **PHP:** 8.4.12 with Zend OPcache enabled
-- **Database:** MySQL 8.0.44
-- **Process Manager:** PHP-FPM
-
-### Performance Optimizations
-- **OPcache Enabled:** PHP bytecode caching for improved response times
-- **MySQL 8.0:** Advanced query optimization and indexing
-- **Asset Compilation:** Vite production build with minification and tree-shaking
-- **Nginx Configuration:** Optimized for Laravel with proper rewrites and caching headers
-
-### Automated Deployment
-- **GitHub Webhook Integration:** Automatic deployment triggered on push to main branch
-- **Zero-Downtime Deployment:** Deployment scripts ensure continuous availability during updates
-- **Environment Management:** Production-specific `.env` configuration with optimized settings
-- **Migration Automation:** Database migrations run automatically during deployment
-
-## Security Features
-
-- CSRF protection on all state-changing requests
-- SQL injection prevention via Eloquent ORM
-- XSS protection through React's automatic escaping
-- Role-based authorization on all sensitive routes
-- Rate limiting on authentication endpoints
-- Secure password hashing with bcrypt
-- API authentication via Laravel Sanctum
+Deployed to production at **[ten-ten.live](https://ten-ten.live)**. See [Deployment Documentation](docs/general/deployment.md) for infrastructure and CI/CD details.
 
 ## Important Notice
 
@@ -308,17 +272,6 @@ The code may be used for:
 - Interview discussions
 
 See the [LICENSE](LICENSE) file for the full license text.
-
-## Project Goals
-
-This project was created to demonstrate:
-- Enterprise-level Laravel application architecture
-- Modern React/TypeScript frontend patterns
-- Advanced database design and optimization
-- Security best practices
-- Role-based access control implementation
-- Multi-vendor marketplace architecture
-- Production-ready code quality and documentation
 
 ## Contact
 

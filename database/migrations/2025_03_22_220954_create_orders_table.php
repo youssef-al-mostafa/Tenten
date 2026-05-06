@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->decimal('total_price',20,4);
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(User::class,'vendor_user_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('vendor_user_id')->constrained('users');
             $table->string('status');
             $table->string('stripe_session_id')->nullable();
             $table->decimal('online_payment_commission',20,4)->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->decimal('price',20,4);
             $table->integer('quantity');
             $table->json('variation_type_option_ids')->nullable();
-            $table->timestamps(); // Don't forget timestamps
+            $table->timestamps(); 
         });
     }
 
