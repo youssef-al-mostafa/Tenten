@@ -2,55 +2,23 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 class DepartmentSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $departments = [
-            [
-                'name' => 'Electronics',
-                'slug' => 'electronics',
-                'active' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Fashion',
-                'slug' => 'fashion',
-                'active' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Home, Garden & Tools',
-                'slug' => Str::slug('Home, Garden & Tools'),
-                'active' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Books & Audible',
-                'slug' => Str::slug('Books & Audible'),
-                'active' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'Health & Beauty',
-                'slug' => Str::slug('Health & Beauty'),
-                'active' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
+            ['name' => 'Men',        'slug' => 'men',        'active' => true, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Women',      'slug' => 'women',      'active' => true, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Accessories','slug' => 'accessories','active' => true, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Children',   'slug' => 'children',   'active' => true, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Sports Wear','slug' => 'sports-wear','active' => true, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Footwear',   'slug' => 'footwear',   'active' => true, 'created_at' => now(), 'updated_at' => now()],
         ];
-        DB::table('departments')->insert($departments);
+
+        // insertOrIgnore is idempotent — skips rows that violate the unique slug constraint
+        DB::table('departments')->insertOrIgnore($departments);
     }
 }

@@ -23,16 +23,16 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'quantity' => $this->quantity,
             'image' => $imageUrl,
-            'user' => [
+            'user' => $this->user ? [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
-                'store_name' => $this->user->vendor->store_name,
-            ],
-            'department' => [
+                'store_name' => $this->user->vendor?->store_name,
+            ] : null,
+            'department' => $this->department ? [
                 'id' => $this->department->id,
                 'name' => $this->department->name,
                 'slug' => $this->department->slug,
-            ],
+            ] : null,
             'description' => $this->when($isDetailView, $this->description),
             'meta_title' => $this->when($isDetailView, $this->meta_title),
             'meta_description' => $this->when($isDetailView, $this->meta_description),

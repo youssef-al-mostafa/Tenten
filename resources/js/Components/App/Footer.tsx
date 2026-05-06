@@ -36,7 +36,7 @@ const Footer = () => {
                         ))}
                     </div>
                 </div>
-                <div className="footer-col w-full lg:w-[70%] grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-8 text-center">
+                <div className="footer-col w-full lg:w-[70%] grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-8 text-left">
                     {footerData.columns.map((column) => (
                         <div key={column.title} className="footer-col-item flex flex-col gap-3">
                             <h3 className="font-satoshi font-semibold text-black text-base tracking-[1px] sm:tracking-[2px]">

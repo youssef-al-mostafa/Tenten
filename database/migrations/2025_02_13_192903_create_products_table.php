@@ -3,8 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
-
 return new class extends Migration
 {
     /**
@@ -28,8 +26,8 @@ return new class extends Migration
             $table->decimal('price', 20, 4);
             $table->string('status')->index()->default('active');
             $table->integer('quantity')->nullable();
-            $table->foreignIdFor( User::class,'created_by');
-            $table->foreignIdFor( User::class,'updated_by');
+            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('updated_by')->constrained('users');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
