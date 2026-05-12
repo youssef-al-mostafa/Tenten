@@ -124,7 +124,7 @@ Route → Middleware → FormRequest (validation) → Controller → Service →
 
 ## Frontend Architecture
 
-The frontend is a React app driven by Inertia.js. There is no client-side router — Laravel's router handles all navigation. When a link is clicked, Inertia intercepts it, makes an XHR to the server, and swaps the page component with the new props. From the user's perspective it behaves like a SPA; from the developer's perspective there's only one routing layer.
+The frontend is a React 19 app driven by Inertia.js. There is no client-side router — Laravel's router handles all navigation. When a link is clicked, Inertia intercepts it, makes an XHR to the server, and swaps the page component with the new props. From the user's perspective it behaves like a SPA; from the developer's perspective there's only one routing layer.
 
 **Component structure:**
 
