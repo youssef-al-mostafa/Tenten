@@ -16,7 +16,7 @@ use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use SimonHamp\LaravelStripeConnect\Traits\Payable;
+use App\StripeConnect\Traits\Payable;
 use Spatie\Permission\Models\Role;
 /**
  * @mixin \Spatie\Permission\Traits\HasRoles
