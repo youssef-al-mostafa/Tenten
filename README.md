@@ -2,7 +2,7 @@
 
 [![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20.svg)](https://laravel.com/)
 [![PHP](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://www.php.net/)
-[![React](https://img.shields.io/badge/React-18-61DAFB.svg)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg)](https://tailwindcss.com/)
 [![Inertia.js](https://img.shields.io/badge/Inertia.js-2.0-9553E9.svg)](https://inertiajs.com/)
@@ -62,7 +62,7 @@ Tenten is a comprehensive B2B2C marketplace that enables clothing stores to crea
 - **Stripe Connect** - Multi-vendor payment processing
 
 ### Frontend
-- **React 18** - Component-based UI library
+- **React 19** - Component-based UI library
 - **TypeScript 5.x** - Type-safe JavaScript
 - **Inertia.js React Adapter** - SPA-like experience without API
 - **Tailwind CSS 3.x** - Utility-first CSS framework
