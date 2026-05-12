@@ -5,7 +5,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import { ProductItem } from '@/Components/App/ProductItem';
 import { Pagination } from '@/Components/Core/Pagination';
 import { ProductFilters } from '@/Components/Core/ProductFilters';
-import { useState, useEffect, useDeferredValue } from 'react';
+import { useState, useEffect, useDeferredValue, useRef } from 'react';
 
 const index = ({
     appName,
@@ -17,8 +17,14 @@ const index = ({
     const [sortBy, setSortBy] = useState(filters.sort || 'newest');
 
     const deferredSearchTerm = useDeferredValue(searchTerm);
+    const isInitialMount = useRef(true);
 
     useEffect(() => {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+
         router.get(route('product.byDepartment', department.slug), {
             keyword: deferredSearchTerm,
             sort: sortBy
