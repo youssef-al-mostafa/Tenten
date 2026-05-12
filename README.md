@@ -1,7 +1,7 @@
 # Tenten
 
-[![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20.svg)](https://laravel.com/)
-[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4.svg)](https://www.php.net/)
+[![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20.svg)](https://laravel.com/)
+[![PHP](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://www.php.net/)
 [![React](https://img.shields.io/badge/React-18-61DAFB.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg)](https://tailwindcss.com/)
@@ -52,8 +52,8 @@ Tenten is a comprehensive B2B2C marketplace that enables clothing stores to crea
 ## Tech Stack
 
 ### Backend
-- **Laravel 11.x** - Modern PHP framework with latest features
-- **PHP 8.2+** - Typed properties, enums, attributes
+- **Laravel 12.x** - Modern PHP framework with latest features
+- **PHP 8.4+** - Typed properties, enums, attributes
 - **MySQL 8.0+ / MariaDB 10.5+** - Relational database
 - **Filament 3.x** - Admin panel with dynamic form generation
 - **Spatie Laravel Permission** - Role-based access control (RBAC)
@@ -132,51 +132,20 @@ See [Category Structure Documentation](docs/architecture/category-structure.md) 
 - Email notifications for order events
 - Invoice generation
 
-## Project Architecture
-
-### Backend Structure
-```
-app/
-├── Enums/              # Type-safe enumerations (Roles, OrderStatus, etc.)
-├── Filament/           # Admin panel resources and pages
-├── Http/
-│   ├── Controllers/    # Request handlers
-│   ├── Middleware/     # Request filtering and auth
-│   └── Requests/       # Form validation
-├── Models/             # Eloquent ORM models
-├── Policies/           # Authorization policies
-├── Services/           # Business logic layer
-└── Providers/          # Service providers
-```
-
-### Frontend Structure
-```
-resources/js/
-├── Components/
-│   ├── App/           # Application-specific components
-│   └── Core/          # Reusable UI components
-├── Layouts/           # Page layouts
-├── Pages/             # Inertia pages (route-based)
-├── types/             # TypeScript type definitions
-└── helpers.ts         # Utility functions
-```
-
 ## Documentation
 
-Comprehensive documentation is available in the `/docs` directory:
+- [Architecture](ARCHITECTURE.md) - Key design decisions and system overview
 
-### Architecture
+### Deep Dives
 - [Product Category Structure](docs/architecture/category-structure.md) - Hierarchical taxonomy implementation
 - [Page Template System](docs/architecture/page-templates.md) - Dynamic content management
-
-### Features
 - [Role-Based Access Control](docs/features/role-permissions.md) - Permission system and role hierarchy
 - [Product Variations System](docs/features/product-variations.md) - Multi-attribute product variations
 
 ## Installation
 
 ### Prerequisites
-- PHP 8.2 or higher
+- PHP 8.4 or higher
 - Composer 2.x
 - Node.js 18+ and npm/pnpm
 - MySQL 8.0+ or MariaDB 10.5+

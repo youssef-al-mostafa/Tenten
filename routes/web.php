@@ -56,6 +56,22 @@ Route::middleware('auth')->group(function () {
             ->middleware(['role:' . RolesEnum::VENDOR->value]);
 
         Route::post('/become-vendor', [VendorController::class, 'store'])->name('vendor.store');
+
+        // Stripe Connect OAuth callbacks
+        Route::prefix('stripe-connect')->name('stripe-connect.')->group(function () {
+            Route::get('return', function () {
+                $account = auth()->user()->retrieveStripeAccount();
+                auth()->user()->setStripeAccountStatus($account->details_submitted)->save();
+                $complete = config('stripe_connect.routes.account.complete');
+                return Route::has($complete)
+                    ? redirect()->route($complete)
+                    : redirect('/');
+            })->name('return');
+
+            Route::get('refresh', function () {
+                return redirect()->to(auth()->user()->getStripeAccountLink());
+            })->name('refresh');
+        });
     });
 });
 
