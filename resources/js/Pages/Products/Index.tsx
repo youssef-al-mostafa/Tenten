@@ -4,7 +4,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import { ProductItem } from '@/Components/App/ProductItem';
 import { Pagination } from '@/Components/Core/Pagination';
 import { ProductFilters } from '@/Components/Core/ProductFilters';
-import { useState, useEffect, useDeferredValue } from 'react';
+import { useState, useEffect, useDeferredValue, useRef } from 'react';
 import StaggerContainer from '@/Components/Core/StaggerContainer';
 import StaggerItem from '@/Components/Core/StaggerItem';
 
@@ -19,15 +19,19 @@ interface ProductsIndexProps {
 
 const ProductsIndex = ({ products, filters }: ProductsIndexProps) => {
     const { departments } = usePage<PageProps>().props;
-
     const [searchTerm, setSearchTerm] = useState(filters.keyword || '');
     const [selectedDepartment, setSelectedDepartment] = useState(filters.department || '');
     const [sortBy, setSortBy] = useState(filters.sort || 'newest');
-
     const deferredSearchTerm = useDeferredValue(searchTerm);
+    const isInitialMount = useRef(true);
 
     useEffect(() => {
-        const params: any = {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+            return;
+        }
+
+        const params: Record<string, string> = {
             sort: sortBy,
             department: selectedDepartment,
         };

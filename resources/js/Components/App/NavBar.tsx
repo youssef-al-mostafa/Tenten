@@ -5,7 +5,8 @@ import { PageProps } from '@/types';
 import { Link } from '../Core/Link';
 
 const NavBar = () => {
-    const { auth, departments, totalQuantity, keyword, appName } = usePage<PageProps>().props;
+    const pageProps = usePage<PageProps>().props;
+    const { auth, departments, totalQuantity, keyword, appName } = pageProps;
     const { user } = auth;
     const searchForm = useForm<{ keyword: string }>({ keyword: keyword || '' });
     const { url } = usePage();

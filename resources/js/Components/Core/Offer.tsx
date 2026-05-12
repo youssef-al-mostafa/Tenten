@@ -1,5 +1,14 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
+interface OfferBannerProps {
+    message?: string;
+    buttonText?: string;
+    buttonUrl?: string;
+    dismissible?: boolean;
+    expiryDays?: number;
+    cookieName?: string;
+    isLoggedIn?: boolean;
+}
 
 /*dismissible : to allow user to close the offer*/
 const OfferBanner = ({
@@ -10,7 +19,7 @@ const OfferBanner = ({
     expiryDays = 7,
     cookieName = 'offer_banner_dismissed',
     isLoggedIn = false
-}) => {
+}: OfferBannerProps) => {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
@@ -53,16 +62,6 @@ const OfferBanner = ({
             )}
         </div>
     );
-};
-
-OfferBanner.propTypes = {
-    message: PropTypes.string,
-    buttonText: PropTypes.string,
-    buttonUrl: PropTypes.string,
-    dismissible: PropTypes.bool,
-    expiryDays: PropTypes.number,
-    cookieName: PropTypes.string,
-    isLoggedIn: PropTypes.bool
 };
 
 export default OfferBanner;
