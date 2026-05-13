@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tenten is a multi-vendor marketplace built as a Laravel monolith. The frontend is a React SPA served through Inertia.js        no separate API, no token juggling, no duplication of routing logic between client and server.
+Tenten is a multi-vendor marketplace built as a Laravel monolith. The frontend is React 19 served through Inertia.js, no separate API, no token juggling, no duplication of routing logic between client and server.
 
 ---
 
@@ -124,7 +124,7 @@ Route → Middleware → FormRequest (validation) → Controller → Service →
 
 ## Frontend Architecture
 
-The frontend is a React 19 app driven by Inertia.js. There is no client-side router — Laravel's router handles all navigation. When a link is clicked, Inertia intercepts it, makes an XHR to the server, and swaps the page component with the new props. From the user's perspective it behaves like a SPA; from the developer's perspective there's only one routing layer.
+The frontend is a React 19 app driven by Inertia.js. There is no client-side router — Laravel's router handles all navigation. When a link is clicked, Inertia intercepts it, makes an XHR to the server, and swaps the page component with the new props. From the user's perspective navigation feels instant with no full-page reloads; from the developer's perspective there's only one routing layer.
 
 **Component structure:**
 
