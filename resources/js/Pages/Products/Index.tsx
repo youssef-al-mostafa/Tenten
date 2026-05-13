@@ -117,7 +117,7 @@ const ProductsIndex = ({ products, filters }: ProductsIndexProps) => {
                         </div>
                     ) : (
                         <>
-                            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            <StaggerContainer key={`${sortBy}-${selectedDepartment}-${deferredSearchTerm}-${products.meta?.current_page}`} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                                 {products.data.map((product) => (
                                     <StaggerItem key={product.id}>
                                         <ProductItem product={product} />
